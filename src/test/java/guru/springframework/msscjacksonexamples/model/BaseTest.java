@@ -1,6 +1,7 @@
 package guru.springframework.msscjacksonexamples.model;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
@@ -16,6 +17,7 @@ public class BaseTest {
 			.lastUpdateDate(OffsetDateTime.now())
 			.price(new BigDecimal("12.99"))
 			.upc(123123123123123L)
+			.myLocalDate(LocalDate.now())
 			.build();
 	}
 }

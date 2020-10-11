@@ -1,6 +1,7 @@
 package guru.springframework.msscjacksonexamples.model;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
@@ -10,6 +11,7 @@ import javax.validation.constraints.Positive;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonFormatTypes;
 
 import lombok.AllArgsConstructor;
@@ -47,5 +49,11 @@ public class BeerDto {
 	//@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ssZ", shape = JsonFormat.Shape.STRING)
 	@JsonFormat(pattern = "yyyy-MM-dd", shape = JsonFormat.Shape.STRING)
 	private OffsetDateTime createdDate;
+	
 	private OffsetDateTime lastUpdateDate;
+
+	//Using JsonSerialize with a custom serializer class is an alternative to JsonFormat to format fields
+	@JsonSerialize(using = LocalDateSerializer.class)
+	private LocalDate myLocalDate;
+	
 }
