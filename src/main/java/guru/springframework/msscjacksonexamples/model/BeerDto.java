@@ -8,6 +8,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Null;
 import javax.validation.constraints.Positive;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,7 +21,11 @@ import lombok.NoArgsConstructor;
 @Builder
 public class BeerDto {
 
-	
+	//Important things to note:
+	//1. Serializing: When explicitly setting up property names, it will override any PropertyNamingStrategies applied
+	//2. Deserializing: The property is expected to be called as stated in @JsonProperty. Otherwise, as it won´t be recognise,
+	//	it will return null
+	@JsonProperty("beerId")
 	@Null
 	private UUID id;
 	
